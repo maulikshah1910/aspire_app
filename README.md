@@ -1,61 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+    <a href="mailto: maulik.shah1910@gmail.com" target="_blank">
+        <h1>Aspire Code Challenge<h1>
+<!--         <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"> -->
+    </a>
 </p>
+        
+## About Code Challenge
 
-## About Laravel
+This challenge is given by <a href="https://aspireapp.com/" target="_blank">Aspire</a> as a part of candidate selection process.<br />
+The challenge states to build a mini-aspire API.</p>
+Its specification is: <br /> 
+It is an app that allows authenticated users to go through a loan application. It doesn’t have to contain too many fields, but at least “amount
+required” and “loan term.” All the loans will be assumed to have a “weekly” repayment frequency.<br />
+After the loan is approved, the user must be able to submit the weekly loan repayments. It can be a simplified repay functionality, which won’t
+need to check if the dates are correct but will just set the weekly amount to be repaid.
+        
+Application is built using <a href="https://laravel.com/" target="_blank">Laravel</a>
+    
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation Steps
+After checkout, several commands needs to be executed to setup this project.
+    
+    composer install
+After installation, we need to get and setup .env file using command:
+    
+    sudo cp .env.example .env
+Once we have .env file, we have to setup application key using command:
+    
+    php artisan key:generate
+Now, you have to create a database blank database and configure database into our .env file over this commands:
+Here, you have to provide your details for `database`, `username`, `password`.
+    
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=<your db-name>
+    DB_USERNAME=<mysql user name>
+    DB_PASSWORD=<mysql password>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Since we have integrated JWT for generation of authentication token over APIs, we have to publish JWT vendor and generate a JWT key in our .env file.
+    
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+    php artisan jwt:secret
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Once all these setup is done, we shall autoload all resources and optimize the project:
+    
+    composer dump-autoload
+    php artiasn optimize:clear
+    
+Now that we have setup ready, we can proceed for databaes migrations.
+    
+    php artisan migrate
+    
+After migration is done, we are all set to run our project by command:
+    
+    php artisan serve --port=<your_custom_port> --host=<custom_host>
+Here, `--port` and `--host` are optional parameters. If we do not provide host, it taken `localhost` or `127.0.0.1` by default. And default port is `8000` (if it is free)
+    
+## Further documentation for functionalities:
+For functional specifications and their parameters and responses, please refer to associated controllers in `app/Http/Controller/API/` location.
+All routes related to this mini-aspire API are located in `routes/api.php` file.
