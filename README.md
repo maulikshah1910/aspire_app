@@ -6,7 +6,6 @@
 </p>
         
 ## About Code Challenge
-
 This challenge is given by <a href="https://aspireapp.com/" target="_blank">Aspire</a> as a part of candidate selection process.<br />
 The challenge states to build a mini-aspire API.</p>
 Its specification is: <br /> 
